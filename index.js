@@ -11,6 +11,7 @@ require("dotenv").config()
 const authRouter = require("./Router/auth")
 const userRouter = require("./Router/user")
 const eventRouter = require("./Router/event")
+const ticketRouter = require("./Router/ticket")
 
 const PORT = process.env.PORT || 3334
 connect()
@@ -35,6 +36,7 @@ app.use(function(req, res, next) {
 app.use('/auth', authRouter)
 app.use('/users', auth, userRouter)
 app.use('/events',auth, eventRouter)
+app.use('/tickets', auth, ticketRouter)
 
 app.get('/',(req,res)=>{
     res.status(200).send({message:"Home Route",status:true})

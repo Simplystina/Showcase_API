@@ -1,4 +1,5 @@
 const EventModel = require("../Model/events")
+const TicketModel = require("../Model/ticket")
 
 exports.addEvent = async(req,res)=>{
     try {
@@ -26,9 +27,21 @@ exports.getAllEvents = async(req,res)=>{
         const userId = req.user.userid
         console.log(userId, "userId")
 
-        const result = await EventModel.find({userId: userId })  
+        const result = await EventModel.find()  
 
-        res.status(200).json({message:"Successfully retrieved all Events", status: true, data: result})
+        res.status(200).json({message:"Successfully retrieved all Events on Showcase", status: true, data: result})
+    } catch (error) {
+        
+    }
+}
+exports.getAllEventTickets = async(req,res)=>{
+    try {
+        const userId = req.user.userid
+        console.log(userId, "userId")
+
+        const result = await TicketModel.find()  
+
+        res.status(200).json({message:"Successfully retrieved all Tickets on Showcase", status: true, data: result})
     } catch (error) {
         
     }
@@ -40,7 +53,7 @@ exports.getAnEvents = async(req,res)=>{
         const userId = req.user.userid
         console.log(userId, "userId")
 
-        const result = await EventModel.find({_id: id, userId: userId })  
+        const result = await EventModel.find({_id: id})  
 
         res.status(200).json({message:"Successfully retrieved Event", status: true, data: result})
     } catch (error) {
@@ -56,7 +69,7 @@ exports.updatesAnEvents = async(req,res)=>{
 
         const result = await EventModel.findByIdAndUpdate(id, data,{new:true})  
       
-        res.status(200).json({message:"Event has been updated successfully", status: true, data: result})
+       return res.status(200).json({message:"Event has been updated successfully", status: true, data: result})
     } catch (error) {
         
     }

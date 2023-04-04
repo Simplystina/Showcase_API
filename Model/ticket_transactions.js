@@ -9,13 +9,14 @@ const TicketTransactionsModel = new mongoose.Schema(
         id: ObjectId,
         first_name: {type:String},
         last_name: {type: String},
-        email: {type:String},
+        email: {type:String, required:true },
         fee: {type:Number},
         status: {type:String},
         amount: {type:Number},
         no_of_purchase: {type:Number},
-        ticket_id: {type:String},
-        
+        ticket_id: {type:String, required:true},
+        reference: {type:String},
+        access_code: {type:String}
     },
     {
       timestamps: true, toJSON: {virtuals: true}

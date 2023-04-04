@@ -7,8 +7,10 @@ const ObjectId = Schema.ObjectId
 const PaymentDetailsModel = new mongoose.Schema(
     {
         id: ObjectId,
-        token: {type:String},
-        user_id: {type:Date},
+        token: {type:String, required:true},
+        user_id: {type:String, required:true},
+        key:{type:Object},
+        iv:{type: Object }
     },
     {
       timestamps: true, toJSON: {virtuals: true}
