@@ -61,7 +61,11 @@ exports.checkoutTicket = async(req,res)=>{
         return res.status(404).json({message:"The ticket doesn't exist",status:true, data:null})
     }
      if(ticketInfo.ticket_type ==="free"){
-        return res.status(404).json({message:"You can't pay for this event because it is a free event"})
+        return res.status(422).json({message:"You can't pay for this event because it is a free event"})
+     }
+
+     if(!ticketInfo.amount){
+        return res.status(422).json({message:"This event does not have any amount", status:true, data:null})
      }
     const transactionParams = {
         email: req.user.email,
