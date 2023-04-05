@@ -8,7 +8,7 @@ const userRouter = express.Router()
 
 
 userRouter.get('/profile', userController.getUserProfile)
-userRouter.patch('/update', userController.updateEmail)
+userRouter.patch('/update', userController.updateUserDetails)
 userRouter.post('/billing/add',userController.addBillings)
 userRouter.get("/billing", userController.getPaymentDetails)
 userRouter.delete('/delete', userController.deleteDetails)

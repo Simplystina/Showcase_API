@@ -56,9 +56,16 @@ exports.checkoutTicket = async(req,res)=>{
 
     const ticketInfo = await TicketModel.findById(id)
     
+    console.log(ticketInfo)
+    if(!ticketInfo){
+        return res.status(404).json({message:"The ticket doesn't exist",status:true, data:null})
+    }
+     if(ticketInfo.ticket_type ==="free"){
+        return res.status(404).json({message:"You can't pay for this event because it is a free event"})
+     }
     const transactionParams = {
         email: req.user.email,
-        amount: ticketInfo.amount || 4000, // amount in kobo
+        amount: ticketInfo.amount , // amount in kobo
       };
 
       const headers = {
@@ -77,7 +84,7 @@ exports.checkoutTicket = async(req,res)=>{
     const get = {
         email: req.user.email,
         status: "pending",
-        amount: ticketInfo.amount || 4000,
+        amount: ticketInfo.amount,
         ticket_id:id,
         reference: response.data.data.reference,
         access_code: response.data.data.access_code
@@ -86,7 +93,7 @@ exports.checkoutTicket = async(req,res)=>{
     //const data = await TicketTransactionModel()
      return res.status(201).json({"message":"Authorization url for payment created successfully", status:true, data:response.data})
     } catch (error) {
-        console.log(error,"an error occrred")
+        console.log(error,"an error occurred")
     }
 }
 

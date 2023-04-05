@@ -31,7 +31,7 @@ exports.getUserProfile = async (req,res)=>{
 }
 
 
-exports.updateEmail = async(req,res)=>{
+exports.updateUserDetails = async(req,res)=>{
     try {
         const {email,pwd} = req.query
         console.log(email, "emailllllllllllllll")
