@@ -107,7 +107,7 @@ exports.deleteTickets = (req,res)=>{
     try {
         const {id} = req.params
         const result = TicketModel.findByIdAndDelete(id)
-        return res.status(201).json({message:"Successfully deleted this event",data:null, status: true})
+        return res.status(201).json({message:"Successfully deleted this ticket",data:null, status: true})
     } catch (error) {
         
     }
