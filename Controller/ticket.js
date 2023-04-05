@@ -30,8 +30,9 @@ exports.createticket = async(req,res)=>{
 exports.updateTickets = async(req,res)=>{
     try {
         const data = req.body
-        const {id} = req.query
+        const {id} = req.params
         const result = await TicketModel.findByIdAndUpdate(id, data, {new:true})
+        console.log(result,"result")
         return res.status(200).json({message:"Ticket has been updated successfully", status: true, data: result})
     } catch (error) {
         
