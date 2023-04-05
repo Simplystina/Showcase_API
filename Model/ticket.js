@@ -14,7 +14,7 @@ const TicketModel = new mongoose.Schema(
         stock: {type:String, default:"limited_stock", enum:["limited_stock","unlimited_stock"]},
         no_of_stock: {type:Number},
         purchase_limit: {type:Number, required:true},
-        price: {type:String},
+        price: {type:Number},
         event_id: {type:String, required: true},
         no_of_purchase: {type:Number},
     },

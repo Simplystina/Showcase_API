@@ -64,12 +64,12 @@ exports.checkoutTicket = async(req,res)=>{
         return res.status(422).json({message:"You can't pay for this event because it is a free event"})
      }
 
-     if(!ticketInfo.amount){
-        return res.status(422).json({message:"This event does not have any amount", status:true, data:null})
+     if(!ticketInfo.price){
+        return res.status(422).json({message:"This event does not have any price", status:true, data:null})
      }
     const transactionParams = {
         email: req.user.email,
-        amount: ticketInfo.amount , // amount in kobo
+        amount: ticketInfo.price , // amount in kobo
       };
 
       const headers = {
@@ -88,7 +88,7 @@ exports.checkoutTicket = async(req,res)=>{
     const get = {
         email: req.user.email,
         status: "pending",
-        amount: ticketInfo.amount,
+        amount: ticketInfo.price,
         ticket_id:id,
         reference: response.data.data.reference,
         access_code: response.data.data.access_code
