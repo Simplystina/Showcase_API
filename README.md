@@ -1,7 +1,7 @@
 ## SHOWCASE_API
-This repo contains the api collection for an an called showcase. It’s an event ticketing API service. It closely emulates the functionalities of https://tix.africa
+This repo contains the api collection for an app called showcase. It’s an event ticketing API service. It closely emulates the functionalities of https://tix.africa
 
-#SETUP 
+# SETUP 
 * Install NodeJS, mongodb
 * pull this repo
 * Open the folder on your local computer
